@@ -1,0 +1,17 @@
+function [a_quan]=ula_pcm(a,n,u)
+%ULA_PCM 	u-law PCM encoding of a sequence
+%       	[A_QUAN]=MULA_PCM(X,N,U).
+%       	X=input sequence.
+%       	n=number of quantization levels (even).     	
+%		a_quan=quantized output before encoding.
+%       U the parameter of the u-law
+
+% todo: 
+    % Apply u-law compression to the input signal using ulaw()
+    z = ulaw(a,u);
+    % uniform pcm encoding using u_pcm()
+    a_quan = u_pcm(z,n);
+    % Apply the inverse of u-law compression to decode the signal using
+    % inv_ulaw()
+    a_quan=inv_ulaw(a_quan,u);
+end
